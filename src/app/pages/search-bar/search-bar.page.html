@@ -1,0 +1,21 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>SearchBar</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="primerMenu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-searchbar (ionInput)="buscar($event)"></ion-searchbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-list>
+    <ion-item *ngFor="let album of albums | filtro: textoBuscar: 'id'">
+      {{album.title}}
+    </ion-item>
+  </ion-list>
+</ion-content>

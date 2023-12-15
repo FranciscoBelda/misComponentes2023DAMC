@@ -1,0 +1,10 @@
+<app-header [titulo]="titulo || 'alert'"></app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button expand="block"
+              color="primary"
+              (click)="mostrarAlert()">Mostrar Alert</ion-button>
+  <ion-button expand="block"
+              color="secondary"
+              (click)="mostrarTitulo()">Mostrar Título</ion-button>
+</ion-content>

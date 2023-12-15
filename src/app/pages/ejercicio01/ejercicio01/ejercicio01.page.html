@@ -1,0 +1,51 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ejercicio01</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+<ion-refresher slot="fixed" (ionRefresh)="loadSkeleton($event)">
+  <ion-refresher-content></ion-refresher-content>
+</ion-refresher>
+  <ng-container *ngIf="!skeleton">
+    <ion-card *ngFor="let post of posts">
+      <ion-card-header>
+        <ion-card-title color="primary" class="ion-text-uppercase">
+          <h3>{{post.title}}</h3>
+        </ion-card-title>
+        <ion-card-subtitle>
+          UserId: {{post.userId}} - Id: {{post.id}}
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{post.body}}</p>
+        <p class="ion-text-center">
+          <ion-button (click)="abrirPopover(post)" color="success" shape="round">Popover</ion-button>
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+  <ng-container *ngIf="skeleton">
+    <ion-card *ngFor="let post of [1,2,3,4]">
+      <ion-card-header>
+        <ion-card-title color="primary" class="ion-text-uppercase">
+          <h3><ion-skeleton-text></ion-skeleton-text></h3>
+        </ion-card-title>
+        <ion-card-subtitle>
+          <ion-skeleton-text></ion-skeleton-text>
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p><ion-skeleton-text></ion-skeleton-text></p>
+        <p class="ion-text-center">
+          <ion-button color="success" shape="round" style="width: 8rem"><ion-skeleton-text></ion-skeleton-text></ion-button>
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+</ion-content>
